@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Launch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            text-align: center;
+            animation: gradientBG 10s infinite alternate;
+        }
+        @keyframes gradientBG {
+            100% {
+                background: linear-gradient(135deg, #1e3c72, #2a5298);
+            }
+        }
+        .countdown-container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .time-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        }
+        .time-box span {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        .label {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #dcdcdc;
+            letter-spacing: 1px;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>Segera Hadir</h1>
+        <div class="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <div class="label">Hari</div>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <div class="label">Jam</div>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <div class="label">Menit</div>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <div class="label">Detik</div>
+            </div>
+        </div>
+    </div>
+    <footer>&copy; 2024 Toko Baju | Semua Hak Dilindungi</footer>
+    <script>
+        const launchDate = new Date("2024-12-31T00:00:00").getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".countdown-container").innerHTML = "<h1>Website Kami Telah Launching!</h1>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
