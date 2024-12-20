@@ -9,8 +9,9 @@ $promo = date("d F Y", strtotime("+3 days", time()));
     <link rel="icon" href="images/logo.jpg">
 
     <!-- CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Fizzx Verss | Catalogue</title>
+    <title>Mverss.Apparel | Catalogue</title>
     <style>
         /*Membuat Tulisan Berkedip*/
         blink {
@@ -37,7 +38,7 @@ $promo = date("d F Y", strtotime("+3 days", time()));
     </style>
 </head>
 
-<body>
+<body onload="showCatalogMessage()">
     <!-- Membuat bagian header untuk membungkus elemen nav dan juga jumbotron -->
     <header>
         <nav>
@@ -55,7 +56,7 @@ $promo = date("d F Y", strtotime("+3 days", time()));
 
     <main>
          <article class="card">
-            <center><h3>Katalog Fizzx Verss | TCS</h3></center>
+            <center><h3>Katalog Mverss.Apparel | TCS</h3></center>
          </article>
 
          <!-- Membuat 2 bagian, #content dan aside -->
@@ -298,7 +299,7 @@ $promo = date("d F Y", strtotime("+3 days", time()));
     </main>
 
     <footer>
-        <p>&#169 Fizzx.Verss | TCS 2024</p>
+        <p>&#169 Mverss.Apparel | TCS 2024</p>
     </footer>
 
     <script src="script.js"></script>
